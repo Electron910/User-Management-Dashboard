@@ -1,0 +1,31 @@
+.row {
+  border-bottom: 1px solid #edf2f7;
+  transition: background-color var(--transition-fast);
+}
+
+.row:hover {
+  background-color: #f7fafc;
+}
+
+.cell {
+  padding: 14px 16px;
+  font-size: 0.95rem;
+  color: var(--color-text);
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  background-color: var(--color-peach);
+  border: 1px solid var(--color-blue);
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.actions {
+  padding: 10px 16px;
+  display: flex;
+  gap: 8px;
+}

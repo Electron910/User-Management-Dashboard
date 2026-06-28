@@ -1,0 +1,27 @@
+.header {
+  background-color: var(--color-peach);
+  border-bottom: 2px solid var(--color-sky);
+  padding: 16px 0;
+  box-shadow: var(--shadow-card);
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+@media (max-width: 768px) {
+  .container { flex-direction: column; align-items: stretch; text-align: center; }
+  .title { font-size: 1.25rem; }
+}
