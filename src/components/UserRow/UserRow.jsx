@@ -5,7 +5,7 @@ import styles from './UserRow.module.css';
 export default function UserRow({ user, onEdit, onDelete }) {
   return (
     <tr className={styles.row}>
-      <td className={styles.cell}>#{user.id}</td>
+      <td className={styles.cell}>{user.id}</td>
       <td className={styles.cell}>{user.firstName}</td>
       <td className={styles.cell}>{user.lastName}</td>
       <td className={styles.cell}>{user.email}</td>

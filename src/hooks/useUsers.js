@@ -90,13 +90,16 @@ export function useUsers() {
     setCurrentPage(1);
   }
 
-  // Dispatches POST request and prepends new user to local state on success
+  // Dispatches POST request and appends new user with correct sequential ID to local state on success
   async function handleAddUser(formData) {
     const payload = mapAppUserToApiPayload(formData);
     try {
-      const { data: createdUser } = await createUser(payload);
-      const newUser = { ...formData, id: createdUser.id || generateTempId() };
-      setUsers((prev) => [newUser, ...prev]);
+      await createUser(payload);
+      setUsers((prev) => {
+        const nextId = prev.length > 0 ? Math.max(...prev.map((u) => u.id)) + 1 : 1;
+        const newUser = { ...formData, id: nextId };
+        return [...prev, newUser];
+      });
       setEditingUser(null);
       showToast('User added successfully.', 'success');
     } catch (err) {

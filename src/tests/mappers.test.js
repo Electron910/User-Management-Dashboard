@@ -20,4 +20,10 @@ describe('mapApiUserToAppUser', () => {
     const second = mapApiUserToAppUser({ id: 3, name: 'A B', email: 'a@b.com' });
     expect(first.department).toBe(second.department);
   });
+
+  it('correctly groups titles like Mrs. into firstName', () => {
+    const result = mapApiUserToAppUser({ id: 6, name: 'Mrs. Dennis Schulist', email: 'karley@jasper.info' });
+    expect(result.firstName).toBe('Mrs. Dennis');
+    expect(result.lastName).toBe('Schulist');
+  });
 });

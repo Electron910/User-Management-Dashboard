@@ -4,8 +4,15 @@ import { DEPARTMENTS } from './constants';
 // Splits full name into first/last name and assigns a stable department based on ID
 export function mapApiUserToAppUser(apiUser) {
   const nameParts = apiUser.name.trim().split(' ');
-  const firstName = nameParts[0] || '';
-  const lastName = nameParts.slice(1).join(' ') || '';
+  let firstName = nameParts[0] || '';
+  let lastName = nameParts.slice(1).join(' ') || '';
+
+  // Group titles (e.g., Mrs., Mr., Dr.) with the first name
+  if (nameParts.length > 2 && (nameParts[0].endsWith('.') || ['Mr', 'Mrs', 'Ms', 'Dr'].includes(nameParts[0]))) {
+    firstName = `${nameParts[0]} ${nameParts[1]}`;
+    lastName = nameParts.slice(2).join(' ');
+  }
+
   const department = DEPARTMENTS[apiUser.id % DEPARTMENTS.length];
 
   return {
